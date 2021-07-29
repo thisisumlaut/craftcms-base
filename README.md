@@ -1,5 +1,5 @@
 # Umlaut Default CraftCMS Installation
-This installation provides all the files for a base CraftCMS, including plugins, updated .gitignore to coincide with technologies used and directory structure, and base templates, as used by Umlaut[https://umlaut.design].
+This installation provides all the files for a base CraftCMS installation, including plugins, updated .gitignore to coincide with technologies used and directory structure, and base templates, as used by Umlaut[https://umlaut.design].
 
 ## Build
 To build, run Composer:
