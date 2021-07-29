@@ -1,5 +1,3 @@
-// List of composer install/config files, such as plugins.
-
 {
   "name": "thisisumlaut/craftcms-base",
   "description": "A base CraftCMS installation as used by Umlaut",
