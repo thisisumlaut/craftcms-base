@@ -1,6 +1,9 @@
 // List of composer install/config files, such as plugins.
 
 {
+  "name": "thisisumlaut/craftcms-base",
+  "description": "A base CraftCMS installation as used by Umlaut",
+  "version": "1.0.0",
   "require": {
     "craftcms/cms": "^3.6.4",
     "vlucas/phpdotenv": "^3.4.0",
