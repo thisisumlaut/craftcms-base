@@ -1,0 +1,110 @@
+@import "variables";
+
+//Basics
+* {
+	//font-family: var(--example);
+	//outline: 1px solid red;
+}
+
+//Headers
+@include headings {
+	//Anything that should be applied to all headings, such as line height. 
+}
+
+h1 {
+
+}
+
+p {
+
+}
+
+p, li, ol {
+
+}
+
+a {
+	&:hover {
+
+	}
+}
+
+svg {
+
+}
+
+button {
+	&:before {
+
+	}
+
+	&:hover {
+
+	}
+
+	&:focus {
+
+	}
+
+	&:active {
+
+	}
+}
+
+.image-wrapper {
+
+}
+
+.text-wrapper {
+
+}
+
+//States
+.flex-row {
+	@include flex(row);
+}
+
+.flex-column {
+	@include flex(column);
+}
+
+.grid-child {
+	@include basic-grid();
+
+	> * {
+		grid-column: wrapper-start / wrapper-end;
+	}
+}
+
+//Animations
+.slide-down {
+	animation: slide-down 1s ease-in-out forwards;
+}
+
+@keyframes slide-down {
+	0% {
+		top: -100vh;
+	}
+
+	100% {
+		top: 0;
+	}
+}
+
+.slide-up {
+	animation: slide-up 1s ease-in-out forwards;
+}
+
+@keyframes slide-up {
+	0% {
+		top: 0;
+	}
+
+	100% {
+		top: -100vh;
+	}
+}
+
+@media only screen and (min-width: $medium-screen) {
+	//CSS GOES HERE
+}

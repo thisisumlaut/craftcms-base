@@ -1,0 +1,10 @@
+# List of everything that should be ignored by git.
+/.env
+/.idea
+/vendor
+.DS_Store
+/scratchpads
+*.sublime-workspace
+*.sublime-project
+*.esproj
+config.codekit3

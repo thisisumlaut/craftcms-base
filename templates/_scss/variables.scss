@@ -1,0 +1,129 @@
+@import "normalize";
+
+//Breakpoints
+$medium-screen:			750px;
+$normal-screen:			1000px;
+$large-screen:			1300px;
+$v-large-screen:		1900px;
+
+//Variables
+:root {
+	//Brand colours
+	//--example:			#172639;
+
+	//Standard theme
+	//--background:		var(--example);
+	//--text:			var(--example);
+
+	//Spacing, sizing, margins, and padding
+	--standard-space:	2rem;
+	--box-padding:		25px;
+	--small-space:		10px;
+	--page-margin:		36px;
+	--column-gap:		10px;
+
+	@media only screen and (min-width: $medium-screen) {
+		--page-margin:	80px;
+		--column-gap:	16px;
+	}
+
+	@media only screen and (min-width: $normal-screen) {
+		--page-margin: 	140px;
+	}
+
+	@media only screen and (min-width: $large-screen) {
+		--standard-space: 4rem;
+	}
+
+	//Typography
+
+	/* Don't forget to include @font-family */
+
+	font-size: 			16px;
+	--font:				"", Helvetica, sans-serif;
+	--h1:				600;
+	--bold:				500;
+	--standard:			300;
+	--lh:				;
+	--spacing:			;
+
+	//Anti-alias
+	font-smooth: always;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+//Mixins
+@mixin headings {
+	h1, h2, h3, h4, h5, h6 {
+		@content;
+	}
+}
+
+@mixin grid($margin-width, $column-number, $column-width, $column-gap) {
+	display: grid;
+	grid-template-columns: [start] minmax($margin-width, 1fr) [wrapper-start] repeat($column-number, minmax(0, $column-width)) [wrapper-end] minmax($margin-width, 1fr) [end];
+	grid-column-gap: $column-gap;
+}
+
+@mixin basic-grid() {
+	@include grid(var(--page-margin), 4, 78px, var(--column-gap));
+
+	@media only screen and (min-width: $medium-screen) {
+		@include grid(var(--page-margin), 8, 62px, var(--column-gap));
+	}
+
+	@media only screen and (min-width: $normal-screen) {
+		@include grid(var(--page-margin), 12, 122px, var(--column-gap));
+	}
+}
+
+@mixin footer-grid() {
+	display: grid;
+	//Needs variables
+}
+
+@mixin half-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-column-gap: var(--standard-space);
+}
+
+@mixin two-thirds-grid() {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-column-gap: var(--standard-space);
+}
+
+@mixin flex($dir) {
+	display: flex;
+	flex-direction: $dir;
+
+	@media only screen and (min-width: $medium-screen) {
+		flex-direction: row;
+	}
+}
+
+@mixin breakout() {
+	position: relative;
+	left: calc(-50vw + 50%);
+	width: 100vw;
+}
+
+@mixin unbreakout() {
+	position: static;
+	left: 0;
+	width: auto;
+}
+
+@mixin standard-space() {
+	padding: var(--standard-space) 0;
+}
+
+//Themes
+* {
+	&[data-theme="dark-theme"] {
+		//--background:		var(--example);
+		//--text:			var(--example);
+	}
+}

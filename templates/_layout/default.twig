@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	{# Set title for page and social cards #}
+	{% if entry.titleMetaTag is defined %}
+		{% if entry.titleMetaTag | length %}
+			{% set pageName = entry.titleMetaTag %}
+			{% set pageTitle = common.companyName ~ " | " ~ entry.titleMetaTag %}
+		{% elseif entry.title | length %}
+			
+			{% if pageName is defined %}
+				{% set pageName = pageTitle %}
+			{% endif %}
+			
+			{% set pageTitle = common.companyName ~ " | " ~ entry.title %}
+		{% else %}
+			{% set pageTitle = common.companyName %}
+		{% endif %}
+	{% else %}
+		{% set pageName = "default" %}
+		{% set pageTitle = common.companyName %}
+	{% endif %}
+
+	{# Set description for page and social cards #}
+	{% if entry.descriptionMetaTag is defined %}
+		{% set pageDesc = entry.descriptionMetaTag %}
+	{% else %}
+		{# ADD DESCRIPTION HERE #}
+		{% set pageDesc = "" %}
+	{% endif %}
+
+	{# Set page-specific parameters #}
+	{% switch pageName | lower %}
+		{% default %}
+			{% set cssStart = '<link rel="stylesheet" type="text/css" href="' %}
+			{% set cssEnd = 'css/default.css">' %}
+			{% set css = cssStart ~ '' ~ siteUrl ~ '' ~ cssEnd %}
+	{% endswitch %}
+
+	{% block head %}
+		<title>{{ pageTitle }}</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="{{ pageDesc }}">
+		<meta property="og:title" content="{{ pageTitle }}">
+		<meta property="og:image" content="{{ siteUrl }}/images/general/facebook-card.png">
+	    <meta property="og:image:type" content="website">
+	    <meta property="og:image:width" content="1200">
+	    <meta property="og:image:height" content="630">
+	    <meta property="og:image:alt" content="Company logo">
+	    <meta property="og:description" content="{{ pageDesc }}">
+	    <meta name="twitter:card" content="summary_large_image">
+	    <meta name="twitter:title" content="{{ pageTitle }}">
+	    <meta name="twitter:description" content="{{ pageDesc }}">
+	    <meta name="twitter:image" content="{{ siteUrl }}/images/general/twitter-card.png">
+	    <link rel="shortcut icon" type="image/png" href="{{ siteUrl }}images/general/favicon.png" />
+	    {# Only include default css if there is no overriding CSS for that specific page #}
+	    {% if css is defined %}
+	    	{{css | raw }}
+	    {% else %}
+	    	<link rel="stylesheet" href="css/default.css" type="text/css">
+	    {% endif %}
+	    {# ADD TYPEKIT LINK HERE #}
+
+	{% endblock %}
+</head>
+<body {% if pageTitle is defined %}class="{{ pageName | lower | replace(' ', '-') }}"{% endif %}>
+	<div class="wrapper body">
+		<header class="main" data-theme="">
+			{% include "_global/header" %}
+
+			<div class="wrapper header hero">
+				{% block header %}{% endblock %}
+			</div>
+		</header>
+
+		<main>
+			<div class="wrapper main">
+				{% block main %}{% endblock %}
+			</div>
+		</main>
+
+		<footer class="grid-child" data-theme="dark-theme">
+			<div class="wrapper footer">
+				{% include "_global/footer" %}
+			</div>
+		</footer>
+
+		{% block scripts %}
+			
+		{% endblock %}
+	</div>
+</body>
+</html>
