@@ -1,7 +1,8 @@
 {
   "name": "thisisumlaut/craftcms-base",
-  "description": "A base CraftCMS installation as used by Umlaut",
-  "version": "1.0.0",
+  "description": "A base CraftCMS installation used by Umlaut",
+  "type": "project",
+  "version": "v1.0.3",
   "require": {
     "craftcms/cms": "^3.6.4",
     "vlucas/phpdotenv": "^3.4.0",
